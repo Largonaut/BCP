@@ -1,0 +1,23 @@
+# Local config/state (personal paths, not for public repo)
+bcp_dashboard_config.json
+
+# Local tools directory README (private, not the BCP public README)
+README.md
+README_tools_local.md
+
+# Unrelated utilities (not part of BCP)
+markdown_to_docx_pdf.py
+docx_to_txt.py
+requirements_doc_converter.txt
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# BCP data files (personal/generated - not for repo)
+*.jsonl
+ground_truth_pending.json
+compaction_reports/
+dashboard_logs/
+context_archive/
