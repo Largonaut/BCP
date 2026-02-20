@@ -604,7 +604,9 @@ def session_filename(session_id: str, first_timestamp: str, semantic_tag: str = 
     short_id = session_id[:8] if session_id != "unknown" else "nosession"
     # Sanitize the identity portion (session ID part only)
     safe = re.sub(r'[^\w\-]', '_', f"session_{date_str}_{short_id}")
-    # Semantic tag appended raw (already validated Unicode, not sanitized)
+    # Defensive re-validation: strip any forbidden characters (defense against tampered semantic_map.json)
+    if semantic_tag:
+        semantic_tag = "".join(c for c in semantic_tag if c not in SEMANTIC_EXCLUDED)
     tag_part = f"{SEMANTIC_SEPARATOR}{semantic_tag}" if semantic_tag else ""
     return safe + suffix + tag_part + ".md"
 

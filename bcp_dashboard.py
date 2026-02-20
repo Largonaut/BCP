@@ -13,6 +13,7 @@ Usage:
 import json
 import os
 import re
+import shlex
 import subprocess
 import sys
 import threading
@@ -433,7 +434,7 @@ class ToolsTab:
         script = str(TOOLS_DIR / tool['script'])
         args_str = self.args_var.get().strip()
 
-        cmd = [sys.executable, script] + args_str.split()
+        cmd = [sys.executable, script] + shlex.split(args_str)
 
         # Add separator in output
         self.output.configure(state='normal')

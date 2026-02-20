@@ -47,7 +47,7 @@ def read_hook_stdin():
     try:
         if sys.stdin.isatty():
             return {}
-        data = sys.stdin.read()
+        data = sys.stdin.read(102400)  # 100KB limit — hook payloads are small
         if not data.strip():
             return {}
         return json.loads(data)
